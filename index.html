@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Rehan</title>
+  <meta name="description" content="Portfolio BUT Informatique — parcours, compétences, SAÉ et stage." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Fond décoratif -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Barre de navigation -->
+  <header class="nav" id="nav">
+    <a href="#/accueil" class="nav__brand">Rehan<span class="nav__dot">.</span></a>
+
+    <nav class="nav__links" id="nav-links">
+      <a href="#/accueil"     data-route="accueil">Accueil</a>
+      <a href="#/parcours"    data-route="parcours">Parcours</a>
+      <a href="#/competences" data-route="competences">Compétences</a>
+      <a href="#/sae"         data-route="sae">SAÉ</a>
+      <a href="#/stage"       data-route="stage">Stage</a>
+      <a href="#/contact"     data-route="contact">Contact</a>
+    </nav>
+
+    <a href="#/contact" class="nav__cta">Me contacter</a>
+
+    <button class="nav__burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Contenu injecté par le routeur -->
+  <main id="app" class="app"></main>
+
+  <!-- Pied de page -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="mono">© <span id="year"></span> — Rehan · BUT Informatique</span>
+      <a href="#/accueil" class="footer__top">Haut de page ↑</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
