@@ -449,3 +449,24 @@ ul { list-style: none; }
   .nav__burger { display: flex; }
   .grid--2, .grid--3 { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   Texte centré (demande)
+   ========================================================= */
+body { text-align: center; }
+.section__lead, .hero__lead { margin-left: auto; margin-right: auto; }
+.hero__cta, .hero__stats, .filters, .detail__meta, .tag-row,
+.gauge__legend, .techno-list, .sae-card__foot { justify-content: center; }
+.block ul.list li { padding-left: 0; text-align: center; }
+.block ul.list li::before { content: "▸ "; position: static; color: var(--green); margin-right: .15rem; }
+.proof, .float-card, .contact-card { justify-content: center; text-align: center; }
+.timeline { padding-left: 0; }
+.timeline::before { display: none; }
+.tl-item::before { display: none; }
+
+/* Paragraphes justifiés des deux côtés (comme un document Word) */
+.prose p, .block p, .section__lead, .hero__lead, .card__text,
+.comp-card__desc, .sae-card__resume, .pillar p, .ba p, .tl-item p {
+  text-align: justify;
+  text-align-last: center;
+}

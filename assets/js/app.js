@@ -179,7 +179,7 @@ function viewParcours() {
         <div class="grid grid--2">
           ${p.engagements.map((e) => `
             <div class="card"><div class="card__title">${e.titre}</div>
-            <p class="card__text">${/À COMPLÉTER/.test(e.texte) ? `<span class="todo">${e.texte}</span>` : e.texte}</p></div>`).join("")}
+            <p class="card__text">${/à compléter/i.test(e.texte) ? `<span class="todo">${e.texte}</span>` : e.texte}</p></div>`).join("")}
         </div>
       </div>
 
@@ -190,7 +190,7 @@ function viewParcours() {
             <div class="tl-item">
               <span class="mono">${e.periode}</span>
               <h4>${e.titre}</h4>
-              <p>${/À COMPLÉTER/.test(e.texte) ? `<span class="todo">${e.texte}</span>` : e.texte}</p>
+              <p>${/à compléter/i.test(e.texte) ? `<span class="todo">${e.texte}</span>` : e.texte}</p>
             </div>`).join("")}
         </div>
       </div>
@@ -269,7 +269,7 @@ function viewTechnoDetail(id) {
                     <span class="proof__icon">↳</span>
                     <span class="proof__body"><span class="proof__title">${e.label}</span></span>
                   </a>`).join("")}</div>`
-              : `<p class="todo">À COMPLÉTER : où as-tu utilisé cette technologie ?</p>`}
+              : `<p class="todo">À compléter</p>`}
           </div>
         </div>
         <aside>
@@ -317,7 +317,7 @@ function viewCompetenceDetail(id) {
           </div>` : ""}
 
           <div class="block">
-            <h2 class="block__title">Preuves & SAÉ associées</h2>
+            <h2 class="block__title">SAÉ associées</h2>
             ${preuves.length
               ? `<div class="linked-sae">${preuves.map((s) => `
                   <a class="sae-card" href="#/sae/${s.id}" style="cursor:pointer">
@@ -327,7 +327,7 @@ function viewCompetenceDetail(id) {
                     <div class="sae-card__title">${s.titre}</div>
                     <p class="sae-card__resume">${s.resume}</p>
                   </a>`).join("")}</div>`
-              : `<p class="todo">À COMPLÉTER : associe des SAÉ à cette compétence dans data.js.</p>`}
+              : `<p class="todo">À compléter</p>`}
           </div>
         </div>
 
@@ -337,7 +337,6 @@ function viewCompetenceDetail(id) {
             ${gauge(c.titre, c.niveauBut1, c.niveauBut2)}
             ${gaugeLegend()}
             <div class="aside-row" style="margin-top:1.2rem"><span>Progression</span><b>+${c.niveauBut2 - c.niveauBut1} pts</b></div>
-            <div class="aside-row"><span>Preuves</span><b>${preuves.length}</b></div>
           </div>
         </aside>
       </div>
@@ -399,7 +398,7 @@ function viewSaeDetail(id) {
           <h1 class="section__title">${s.titre}</h1>
           <div class="detail__meta">${typeBadge(s.type)}<span class="badge">${s.semestre}</span></div>
         </div>
-        <p class="todo">À COMPLÉTER : cette SAÉ est archivée mais pas encore détaillée. Remplis ses champs dans <strong>assets/js/data.js</strong> (objectif, mission, rôle, difficultés, compétences acquises, avant/après, preuves).</p>
+        <p class="todo">À compléter</p>
       </section>`;
   }
 
@@ -460,7 +459,7 @@ function viewSaeDetail(id) {
                       <span class="proof__sub">${p.type}${p.url === "#" ? " · lien à ajouter" : ""}</span>
                     </span>
                   </a>`).join("")}</div>`
-              : `<p class="todo">À COMPLÉTER : ajoute tes preuves.</p>`}
+              : `<p class="todo">À compléter</p>`}
           </div>
         </aside>
       </div>
@@ -469,14 +468,14 @@ function viewSaeDetail(id) {
 
 function block(titre, contenu) {
   if (!contenu) return "";
-  const todo = /À COMPLÉTER/.test(contenu);
+  const todo = /à compléter/i.test(contenu);
   return `<div class="block"><h2 class="block__title">${titre}</h2>
     <div class="prose">${todo ? `<p class="todo">${contenu}</p>` : paragraphs(contenu)}</div></div>`;
 }
 
 function viewStage() {
   const s = DATA.stage;
-  const isTodo = (t) => /À COMPLÉTER/.test(t || "");
+  const isTodo = (t) => /à compléter/i.test(t || "");
   const txt = (t) => (isTodo(t) ? `<span class="todo">${t}</span>` : t);
   const comps = (s.competencesStage || []).map((cs) => ({ c: getCompetence(cs.id), commentaire: cs.commentaire })).filter((x) => x.c);
 
